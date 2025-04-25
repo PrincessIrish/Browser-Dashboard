@@ -1,0 +1,133 @@
+<!--
+README:
+This HTML file is a Browser Environment Dashboard created for a web development activity. It collects and displays information about the user's browser, screen, and page using JavaScript browser objects. The dashboard includes navigation controls, dynamic page title editing, and styling that changes with screen size.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Environment Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: pink;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            outline: 3px solid black;
+        }
+        section {
+            margin-bottom: 20px;
+        }
+        button {
+            margin: 5px 0;
+            padding: 8px 12px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Student Profile</h1>
+        <p><strong>Complete Name:</strong> Princess Irish F Oliver</p>
+        <p><strong>Sex:</strong> Female</p>
+        <p><strong>Address:</strong> San Isidro West </p>
+        <p><strong>Course, Year, Section:</strong> BSIT-2B</p>
+        <p><strong>Name of School:</strong> Partido State University</p>
+        <p><strong>Semester and Academic Year:</strong> 2nd Semester, AY 2024-2025</p>
+        <p><strong>Subject Code and Title:</strong> PF2-Event Driven Programming </p>
+        <p><strong>Subject Instructor:</strong> Mr. Arjay Abio</p>
+    </header>
+
+         <!-- Activity Links -->
+    <section style="background-color: Pink; border: 2px solid #ccc; padding: 15px; border-radius: 8px; margin-bottom: 20px; outline: 3px solid black">
+        <h2>Activity Links</h2>
+        <ul>
+            <li><a href="https://princessirish.github.io/Word-Guess-Game-/" target="_blank">Word Guess Game</a></li>
+        </ul>
+    </section>
+
+    <section style="background-color: Pink; border: 2px solid #ccc; padding: 15px; border-radius: 8px; margin-bottom: 20px; outline: 3px solid black;"
+    
+    <section id="browserInfo">
+        <h2>Browser Information</h2>
+        <p id="browserName"></p>
+        <p id="platform"></p>
+        <p id="javaEnabled"></p>
+        <p id="screenResolution"></p>
+        <p id="availableScreen"></p>
+        <p id="colorDepth"></p>
+    </section>
+    <section style="background-color: Pink; border: 2px solid #ccc; padding: 15px; border-radius: 8px; margin-bottom: 20px; outline: 3px solid black;"
+    <section id="pageInfo">
+        <h2>Page Information</h2>
+        <p id="currentURL"></p>
+        <p id="hostname"></p>
+        <p id="pageTitle"></p>
+        <button onclick="changeTitle()">Change Page Title</button>
+    </section>
+    <section style="background-color: Pink; border: 2px solid #ccc; padding: 15px; border-radius: 8px; margin-bottom: 20px; outline: 3px solid black; "
+    
+    <section id="navigation">
+        <h2>Navigation Controls</h2>
+        <button onclick="location.reload()">Reload Page</button>
+        <button onclick="location.href='https://www.google.com'">Go to Example.com</button>
+        <button onclick="history.back()">Go Back</button>
+        <button onclick="history.forward()">Go Forward</button>
+    </section>
+
+    <script>
+        // Part A: Browser Information
+        document.getElementById('browserName').innerText = "Browser Name and Version: " + navigator.userAgent;
+        document.getElementById('platform').innerText = "Platform (OS): " + navigator.platform;
+        document.getElementById('javaEnabled').innerText = "Java Enabled: " + navigator.javaEnabled();
+        document.getElementById('screenResolution').innerText = "Screen Resolution: " + screen.width + " x " + screen.height;
+        document.getElementById('availableScreen').innerText = "Available Screen Size: " + screen.availWidth + " x " + screen.availHeight;
+        document.getElementById('colorDepth').innerText = "Color Depth: " + screen.colorDepth + " bits";
+
+        // Part B: Page Information
+        document.getElementById('currentURL').innerText = "Current URL: " + location.href;
+        document.getElementById('hostname').innerText = "Hostname: " + location.hostname;
+        document.getElementById('pageTitle').innerText = "Page Title: " + document.title;
+
+        // Change page title dynamically
+        function changeTitle() {
+            let newTitle = prompt("Enter a new page title:");
+            if (newTitle) {
+                document.title = newTitle;
+                document.getElementById('pageTitle').innerText = "Page Title: " + newTitle;
+            }
+        }
+
+        // Part D: Dynamic Background Color
+        function setBackgroundBasedOnWidth() {
+            const width = window.innerWidth;
+            if (width < 600) {
+                document.body.style.backgroundColor = 'blue';
+            } else if (width >= 600 && width < 992) {
+                document.body.style.backgroundColor = 'green';
+            } else {
+                document.body.style.backgroundColor = 'orange';
+            }
+        }
+
+        // Apply background color on load and resize
+        window.onload = setBackgroundBasedOnWidth;
+        window.onresize = setBackgroundBasedOnWidth;
+    </script>
+</body>
+</html>
